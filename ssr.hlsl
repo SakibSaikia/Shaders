@@ -249,7 +249,7 @@ RWTexture2D<float4> ReflectionTexOut : register(u0);
 void main(uint3 DispatchID : SV_DispatchThreadID)
 {
 	uint2 PixelID = uint2(DispatchID.x, DispatchID.y);
-	float2 PixelUV = float2(PixelID) / BufferSize;
+	float2 PixelUV = asfloat(PixelID) / BufferSize;
 	float2 NDCPos = float2(2.f,-2.f) * PixelUV + float2(-1.f,1.f);
 
 	// Initialize to 0 as some of the code paths might not write to O/P
